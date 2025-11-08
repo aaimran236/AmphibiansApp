@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Amphibians</string>
+
+    <string name="loading_failed">Failed to load</string>
+    <string name="loading">Loading</string>
+    <string name="amphibian_photo">Amphibian photo</string>
+
+
+    <!-- Define the individual strings -->
+    <string name="amphibian_name_placeholder">Green Tree Frog</string>
+    <string name="amphibian_type_placeholder">Tree Frog</string>
+
+    <!-- 
+      BEST PRACTICE: Create a single formatted string.
+      - %1$s is a placeholder for the first argument (the name).
+      - %2$s is a placeholder for the second argument (the type).
+      - This allows translators to reorder the words if needed for their language.
+    -->
+    <string name="amphibian_name_with_type">"%1$s (%2$s)"</string>
+
+
+    
 </resources>
