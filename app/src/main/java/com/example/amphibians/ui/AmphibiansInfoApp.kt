@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.amphibians.R
 import com.example.amphibians.ui.screens.AmphibiansViewModel
 import com.example.amphibians.ui.screens.HomeScreen
@@ -30,11 +31,9 @@ fun AmphibiansInfoApp() {
         Surface(
             modifier = Modifier.fillMaxSize()
         ) {
-            // TODO: Update viewmodel and UiState
-            val viewmodel: AmphibiansViewModel = AmphibiansViewModel()
-            val amphibianUiState= viewmodel.amphibianUiState
+            val amphibiansViewModel: AmphibiansViewModel = viewModel()
             HomeScreen(
-                amphibianUiState=amphibianUiState,
+                amphibianUiState=amphibiansViewModel.amphibianUiState,
                 contentPadding =it
             )
         }

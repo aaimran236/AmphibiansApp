@@ -42,9 +42,20 @@ fun HomeScreen(
     when (amphibianUiState) {
         is AmphibianUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
         is AmphibianUiState.Success -> AmphibianListScreen(amphibianUiState.amphibians, modifier = modifier.fillMaxWidth(), contentPadding = contentPadding)
+
+//        For loading single AmphibianInfo card
+//        is AmphibianUiState.Success -> {
+//            LazyColumn(
+//                modifier = Modifier.fillMaxWidth(),
+//                contentPadding = contentPadding // Apply padding from the Scaffold
+//            ) {
+//                item{
+//                    AmphibianInfoCard(amphibianUiState.amphibians, modifier = modifier.fillMaxWidth())
+//                }
+//            }
+//        }
         is AmphibianUiState.Error -> ErrorScreen( modifier = modifier.fillMaxSize())
     }
-
 }
 
 /*
@@ -75,8 +86,9 @@ fun AmphibianListScreen(
 @Composable
 fun AmphibianInfoCard( amphibianInfo: AmphibianInfo,modifier: Modifier= Modifier){
     Card(
-        modifier = Modifier.fillMaxWidth()
-        .padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(5.dp),
         ///elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
@@ -105,7 +117,8 @@ fun AmphibianInfoCard( amphibianInfo: AmphibianInfo,modifier: Modifier= Modifier
                 contentScale = ContentScale.Crop,
                 error = painterResource(R.drawable.ic_broken_image),
                 placeholder = painterResource(R.drawable.loading_img),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     ///.height(200.dp),
                     .aspectRatio(1.5f)
             )
@@ -127,7 +140,7 @@ fun AmphibianInfoCard( amphibianInfo: AmphibianInfo,modifier: Modifier= Modifier
 }
 
 /**
- * The home screen displaying the loading message.
+ * The home screen displaying the loading image drawable.
  */
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
@@ -139,6 +152,9 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     )
 }
 
+/**
+ * The home screen displaying error message
+ */
 @Composable
 fun ErrorScreen(
     modifier: Modifier = Modifier) {
