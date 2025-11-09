@@ -22,7 +22,7 @@ import java.io.IOException
  * UI state for the Home screen
  */
 sealed interface AmphibianUiState {
-    data class Success(val amphibians: List<AmphibianInfo>) : AmphibianUiState
+    data class Success( val amphibians: List<AmphibianInfo>) : AmphibianUiState
 
     ///data class Success(val amphibians: AmphibianInfo) : AmphibianUiState
     object Error : AmphibianUiState
@@ -46,21 +46,17 @@ class AmphibiansViewModel(private val amphibianInfosRepository: AmphibianInfosRe
 
     fun getAmphibiansInfo() {
         viewModelScope.launch {
-            Log.d("AmphibiansViewModel", "Attempting to fetch amphibian info...")
+
             amphibianUiState = AmphibianUiState.Loading
             amphibianUiState = try {
                 ///val amphibianInfosRepository = NetworkAmphibianInfosRepository()
 
-                Log.d("AmphibiansViewModel", "SUCCESS: Fetched amphibians.")
                 AmphibianUiState.Success(amphibianInfosRepository.getAmphibians())
             } catch (e: IOException) {
-                Log.e("AmphibiansViewModel", "Network I/O Error: ${e.message}", e)
                 AmphibianUiState.Error
             } catch (e: HttpException) {
-                Log.e("AmphibiansViewModel", "HTTP Error: ${e.message}", e)
                 AmphibianUiState.Error
             } catch (e: Exception) { // Add a general catch-all for debugging
-                Log.e("AmphibiansViewModel", "An unexpected error occurred: ${e.message}", e)
                 AmphibianUiState.Error
             }
         }
