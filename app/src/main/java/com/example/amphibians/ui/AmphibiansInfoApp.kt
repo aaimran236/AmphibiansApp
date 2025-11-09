@@ -29,13 +29,15 @@ fun AmphibiansInfoApp() {
         topBar = { AmphibiansTopAppBar(scrollBehavior = scrollBehavior) }
     ) {
         Surface(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
         ) {
             val amphibiansViewModel: AmphibiansViewModel = viewModel(
                 factory = AmphibiansViewModel.Factory
             )
 
             HomeScreen(
+                retryAction = amphibiansViewModel::getAmphibiansInfo,
                 amphibianUiState=amphibiansViewModel.amphibianUiState,
                 contentPadding =it
             )

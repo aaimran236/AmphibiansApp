@@ -4,6 +4,7 @@
     <string name="loading_failed">Failed to load</string>
     <string name="loading">Loading</string>
     <string name="amphibian_photo">Amphibian photo</string>
+    <string name="retry">Retry</string>
 
 
     <!-- Define the individual strings -->
