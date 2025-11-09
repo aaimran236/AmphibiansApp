@@ -76,7 +76,7 @@ fun AmphibianListScreen(
             AmphibianInfoCard(
                 amphibianInfo = amphibian,
                 modifier = modifier
-                    .padding(4.dp)
+                    ///.padding(4.dp)
                     .fillMaxWidth()
             )
         }
